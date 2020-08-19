@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename package &apos;com.infosys.inftel.configserver&apos; to &apos;com.tcs.information.configserver&apos;&#x0D;&#x0A;- Original project: &apos;infytelconfigServer&apos;&#x0D;&#x0A;- Original element: &apos;infytelconfigServer/src/main/java/com.infosys.inftel.configserver&apos;&#x0D;&#x0A;- Renamed element: &apos;infytelconfigServer/src/main/java/com.tcs.information.configserver&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename package &apos;com.infosys.inftel.configserver&apos;" flags="589830" hierarchical="false" id="org.eclipse.jdt.ui.rename.package" input="/src\/main\/java&lt;com.infosys.inftel.configserver" name="com.tcs.information.configserver" qualified="false" references="true" stamp="1596628490531" textual="false" version="1.0"/>
+</session>

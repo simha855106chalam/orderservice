@@ -1,0 +1,9 @@
+package com.infosys.infytel.customerdetail.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.infosys.infytel.customerdetail.entity.Customer;
+
+public interface CustomerRepository extends JpaRepository<CustomerOrder, Long> {
+
+}

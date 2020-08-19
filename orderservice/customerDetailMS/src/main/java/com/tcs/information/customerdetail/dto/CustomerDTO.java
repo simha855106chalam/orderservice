@@ -1,0 +1,103 @@
+package com.tcs.information.customerdetail.dto;
+
+import java.util.List;
+
+import com.tcs.information.customerdetail.entity.CustomerOrder;
+
+public class CustomerDTO {
+
+	long phoneNo;
+	String customerName;
+	String shippingAddress;
+	String orderItems;
+	Integer  total;
+	String orderDate;
+
+	PlanDTO currentPlan;
+	public long getPhoneNo() {
+		return phoneNo;
+	}
+	public void setPhoneNo(long phoneNo) {
+		this.phoneNo = phoneNo;
+	}
+	
+	
+	
+	public String getCustomerName() {
+		return customerName;
+	}
+	public void setCustomerName(String customerName) {
+		this.customerName = customerName;
+	}
+	public String getShippingAddress() {
+		return shippingAddress;
+	}
+	public void setShippingAddress(String shippingAddress) {
+		this.shippingAddress = shippingAddress;
+	}
+	
+	public String getOrderItems() {
+		return orderItems;
+	}
+	public void setOrderItems(String orderItems) {
+		this.orderItems = orderItems;
+	}
+	public Integer getTotal() {
+		return total;
+	}
+	public void setTotal(Integer total) {
+		this.total = total;
+	}
+	public String getOrderDate() {
+		return orderDate;
+	}
+	public void setOrderDate(String orderDate) {
+		this.orderDate = orderDate;
+	}
+	public PlanDTO getCurrentPlan() {
+		return currentPlan;
+	}
+	public void setCurrentPlan(PlanDTO currentPlan) {
+		this.currentPlan = currentPlan;
+	}
+	
+	// Converts Entity into DTO
+	
+	public static CustomerDTO valueOf(CustomerOrder customer) {
+		CustomerDTO customerDTO = new CustomerDTO();
+		customerDTO.setShippingAddress(customer.getShippingAddress());
+		customerDTO.setCustomerName(customer.getCustomerName());
+		customerDTO.setOrderDate(customer.getOrderDate());
+		customerDTO.setOrderItems(customer.getOrderItems());
+		customerDTO.setPhoneNo(customer.getPhoneNo());
+		customerDTO.setTotal(customer.getTotal());
+		PlanDTO planDTO = new PlanDTO();
+			planDTO.setProductCode(customer.getPlanId());
+		customerDTO.setCurrentPlan(planDTO);
+		//PlanDTO planDTO = PlanDTO.valueOf(customer.getPlan());
+		
+		/*
+		 * List<FriendFamily> friends = customer.getFriends(); List<Long> friendList =
+		 * new ArrayList<>(); for(FriendFamily friend : friends) {
+		 * friendList.add(friend.getFriendAndFamily()); }
+		 */
+		//customerDTO.setFriendAndFamily(friendList);
+		return customerDTO;
+		
+	}
+	
+	//Converts DTO into Entity
+	
+	public CustomerOrder createEntity() {
+		
+		CustomerOrder cust = new CustomerOrder();
+		cust.setShippingAddress(this.shippingAddress);
+		cust.setOrderDate(this.orderDate);
+		cust.setOrderItems(this.orderItems);
+		cust.setCustomerName(this.customerName);
+		cust.setTotal(this.total);
+		cust.setPhoneNo(this.getPhoneNo());
+		return cust;
+		
+	}
+}

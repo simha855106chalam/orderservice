@@ -1,0 +1,46 @@
+package com.infosys.infytel.plans.service;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.infosys.infytel.plans.dto.PlanDTO;
+import com.infosys.infytel.plans.entity.Plan;
+import com.infosys.infytel.plans.repository.PlanRepository;
+
+@Service
+public class PlanService {
+
+	Logger logger = LoggerFactory.getLogger(this.getClass());
+	
+	@Autowired
+	PlanRepository planRepository;
+	// Fetch all Plan Details
+	public List<PlanDTO> getAllPlans(){
+		List<Plan> plans = planRepository.findAll();
+		List<PlanDTO> planDTOs = new ArrayList<>();
+		for(Plan plan : plans) {
+			PlanDTO planDTO = PlanDTO.valueOF(plan);
+			planDTOs.add(planDTO);
+		}
+		logger.info("Plan Details : {}", planDTOs);
+		return planDTOs; 
+		
+	}
+	//To get a plan based on productCode
+	public PlanDTO getplan(Integer productCode) {
+		PlanDTO planDTO = null;
+		Optional<Plan> optPlan = planRepository.findById(planId);
+		if(optPlan.isPresent()) {
+			Plan plan = optPlan.get();
+			planDTO =  PlanDTO.valueOF(plan);
+		}
+		return planDTO;
+		
+	}
+}

@@ -1,0 +1,71 @@
+package com.infosys.infytel.customerdetail.dto;
+
+import java.util.List;
+
+import com.infosys.infytel.customerdetail.entity.Customer;
+
+public class CustomerDTO {
+
+	long phoneNo;
+	String customerName;
+	String shippingAddress;
+	List<String> orderItems;
+	Integer  total;
+	String orderDate;
+
+	PlanDTO currentPlan;
+	public long getPhoneNo() {
+		return phoneNo;
+	}
+	public void setPhoneNo(long phoneNo) {
+		this.phoneNo = phoneNo;
+	}
+	
+	
+	
+	public PlanDTO getCurrentPlan() {
+		return currentPlan;
+	}
+	public void setCurrentPlan(PlanDTO currentPlan) {
+		this.currentPlan = currentPlan;
+	}
+	
+	// Converts Entity into DTO
+	
+	public static CustomerDTO valueOf(CustomerOrder customer) {
+		CustomerDTO customerDTO = new CustomerDTO();
+		customerDTO.setAddress(customer.getAddress());
+		customerDTO.setAge(customer.getAge());
+		customerDTO.setGender(customer.getGender());
+		customerDTO.setName(customer.getName());
+		customerDTO.setPhoneNo(customer.getPhoneNo());
+		//PlanDTO planDTO = PlanDTO.valueOf(customer.getPlan());
+		PlanDTO planDTO = new PlanDTO();
+		planDTO.setPlanId(customer.getPlanId());
+		customerDTO.setCurrentPlan(planDTO);
+		/*
+		 * List<FriendFamily> friends = customer.getFriends(); List<Long> friendList =
+		 * new ArrayList<>(); for(FriendFamily friend : friends) {
+		 * friendList.add(friend.getFriendAndFamily()); }
+		 */
+		//customerDTO.setFriendAndFamily(friendList);
+		return customerDTO;
+		
+	}
+	
+	//Converts DTO into Entity
+	
+	public Customer createEntity() {
+		
+		Customer cust = new Customer();
+		cust.setAddress(this.getAddress());
+		cust.setAge(this.getAge());
+		cust.setGender(this.getGender());
+		cust.setName(this.getName());
+		cust.setPassword(this.getPassword());
+		cust.setPhoneNo(this.getPhoneNo());
+		cust.setPlanId(this.getCurrentPlan().planId);
+		return cust;
+		
+	}
+}

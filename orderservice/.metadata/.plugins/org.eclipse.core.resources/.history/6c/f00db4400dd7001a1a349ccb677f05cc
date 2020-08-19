@@ -1,0 +1,5 @@
+package com.infosys.infytel.customerdetail.exception;
+
+public class OrderNotFoundException {
+
+}
